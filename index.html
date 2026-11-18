@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Сайт</title>
+  <meta name="description" content="">
+  <meta name="theme-color" content="#e2ddd8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="img/seq/f_0001.webp">
+  <script src="config.js"></script>
+  <script src="client.js"></script>
+</head>
+<body>
+  <header class="top" id="top">
+    <div class="wrap top__in">
+      <a href="#" class="logo"><span class="logo__dot"></span><span data-t="brand"></span></a>
+      <nav class="nav">
+        <a href="#try">Попробовать</a><a href="#calc">Цены</a><a href="#how">Как работаем</a><a href="#faq">Вопросы</a>
+      </nav>
+      <a class="top__phone" data-phone></a>
+      <a href="#calc" class="btn btn--sm btn--accent top__cta">Рассчитать</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Сцена: прокрутка управляет очисткой дивана -->
+    <section class="hero" id="hero">
+      <div class="hero__stick">
+        <canvas id="heroCanvas" aria-label="Диван очищается при прокрутке"></canvas>
+        <div class="hero__copy wrap" id="heroCopy"></div>
+        <div class="hero__bar"><span id="heroBar"></span></div>
+        <div class="hero__hint" id="heroHint">Прокрутите вниз <span>↓</span></div>
+      </div>
+    </section>
+
+    <section class="stats wrap rv" id="stats"></section>
+
+    <section class="section" id="try">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kicker">Интерактив</p>
+          <h2 data-t="scratch.title"></h2>
+          <p class="sub" data-t="scratch.subtitle"></p>
+        </div>
+        <div class="scratch rv" id="scratch">
+          <img class="scratch__clean" id="scratchClean" alt="Чистый диван">
+          <canvas class="scratch__dirty" id="scratchCanvas" aria-label="Проведите по дивану, чтобы очистить"></canvas>
+          <div class="scratch__ui">
+            <div class="scratch__meter"><span id="scratchMeter"></span></div>
+            <span class="scratch__pct" id="scratchPct">0% чисто</span>
+            <button class="scratch__reset" id="scratchReset" type="button">Испачкать снова</button>
+          </div>
+          <div class="scratch__done" id="scratchDone">
+            <strong data-t="scratch.done"></strong>
+            <a href="#calc" class="btn btn--accent">Узнать стоимость</a>
+          </div>
+          <div class="scratch__tip" id="scratchTip">👆 Ведите по дивану</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="calc">
+      <div class="wrap">
+        <div class="head rv">
+          <p class="kicker">Калькулятор</p>
+          <h2 data-t="calc.title"></h2>
+          <p class="sub" data-t="calc.subtitle"></p>
+        </div>
+        <div class="calc">
+          <div class="calc__grid" id="calcItems"></div>
+          <aside class="calc__sum rv">
+            <p class="calc__label">Ваш заказ</p>
+            <ul class="calc__list" id="calcList"><li class="muted">Пока ничего не выбрано</li></ul>
+            <div id="calcOptions"></div>
+            <div class="calc__total"><span>Итого</span><strong id="calcTotal">0 ₽</strong></div>
+            <p class="small muted" id="calcMin"></p>
+            <a href="#order" class="btn btn--accent btn--block" id="calcOrder">Оформить заявку</a>
+            <p class="tiny" data-t="calc.note"></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallerySec" hidden>
+      <div class="wrap">
+        <div class="head rv"><p class="kicker">Наши работы</p><h2>До и после</h2></div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="head rv"><p class="kicker">Почему мы</p><h2>Сделаем аккуратно. Отвечаем за результат.</h2></div>
+        <div class="adv" id="advList"></div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="how">
+      <div class="wrap">
+        <div class="head rv"><p class="kicker">Как мы работаем</p><h2>Четыре шага до чистого дивана</h2></div>
+        <ol class="steps" id="stepsList"></ol>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="wrap">
+        <div class="head rv"><p class="kicker">Отзывы</p><h2>Нам доверяют свои диваны</h2><p class="sub demo-only">В демо-версии показаны примеры отзывов. На сайте мастера здесь будут его настоящие отзывы.</p></div>
+        <div class="reviews" id="reviewsList"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="faq">
+      <div class="wrap faq-wrap">
+        <div class="head rv"><p class="kicker">Вопросы</p><h2>Частые вопросы</h2></div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section order" id="order">
+      <div class="wrap order__in">
+        <div class="rv">
+          <p class="kicker kicker--light">Заявка</p>
+          <h2>Верните дивану вид как из магазина</h2>
+          <p class="order__lead">Перезвоним за 5 минут, назовём точную цену и время приезда.</p>
+          <div class="order__msg">
+            <a class="btn btn--wa" data-wa>WhatsApp</a>
+            <a class="btn btn--tg" data-tg>Telegram</a>
+          </div>
+          <p class="order__area" data-t="area"></p>
+        </div>
+        <form class="form rv" id="form">
+          <label>Имя<input name="name" placeholder="Как к вам обращаться" required></label>
+          <label>Телефон<input name="phone" type="tel" placeholder="+7" required></label>
+          <label>Что почистить<textarea name="comment" id="formComment" rows="3" placeholder="Например: угловой диван и 2 кресла"></textarea></label>
+          <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--accent btn--block" type="submit">Отправить заявку</button>
+          <p class="form__status" id="formStatus" role="status"></p>
+          <p class="tiny">Нажимая кнопку, вы соглашаетесь на обработку персональных данных для связи с вами.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <div><strong data-t="brand"></strong><p class="muted small" data-t="footerNote"></p><p class="tiny demo-only">Демо-версия сайта: название, контакты и отзывы приведены для примера.</p></div>
+      <div class="small foot__c"><a data-phone></a><span class="muted" data-t="workHours"></span></div>
+    </div>
+  </footer>
+
+  <div class="mbar">
+    <a data-phone class="mbar__call">Позвонить</a>
+    <a data-wa class="mbar__wa">WhatsApp</a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
